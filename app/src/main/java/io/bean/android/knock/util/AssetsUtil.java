@@ -1,15 +1,15 @@
-package io.bean.android.knock.util;
+package io.bean.android.dynamic.util;
 
 import android.content.Context;
 
-import com.lody.virtual.helper.utils.MD5Utils;
+import io.bean.virtual.helper.utils.MD5Utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import io.bean.android.knock.common.Constants;
+import io.bean.android.dynamic.common.Constants;
 
 public class AssetsUtil {
 

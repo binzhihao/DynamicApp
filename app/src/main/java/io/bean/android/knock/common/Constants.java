@@ -1,4 +1,4 @@
-package io.bean.android.knock.common;
+package io.bean.android.dynamic.common;
 
 public class Constants {
     public static final boolean DEBUG = true;

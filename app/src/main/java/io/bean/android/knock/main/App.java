@@ -1,16 +1,16 @@
-package io.bean.android.knock.main;
+package io.bean.android.dynamic.main;
 
 import android.app.Application;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 
-import com.lody.virtual.client.core.InstallStrategy;
-import com.lody.virtual.client.core.VirtualCore;
-import com.lody.virtual.remote.InstallResult;
+import io.bean.virtual.client.core.InstallStrategy;
+import io.bean.virtual.client.core.VirtualCore;
+import io.bean.virtual.remote.InstallResult;
 
-import io.bean.android.knock.common.Constants;
-import io.bean.android.knock.util.LogUtil;
+import io.bean.android.dynamic.common.Constants;
+import io.bean.android.dynamic.util.LogUtil;
 
 public class App extends Application {
 

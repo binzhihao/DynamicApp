@@ -1,28 +1,24 @@
-package io.bean.android.knock.main;
+package io.bean.android.dynamic.main;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.widget.Toast;
-
-import com.lody.virtual.client.core.InstallStrategy;
-import com.lody.virtual.client.core.VirtualCore;
-import com.lody.virtual.client.ipc.VActivityManager;
-import com.lody.virtual.remote.InstallResult;
-import com.lody.virtual.remote.InstalledAppInfo;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
 
-import io.bean.android.knock.R;
-import io.bean.android.knock.common.Constants;
-import io.bean.android.knock.util.AssetsUtil;
+import io.bean.android.dynamic.R;
+import io.bean.android.dynamic.common.Constants;
+import io.bean.android.dynamic.util.AssetsUtil;
+import io.bean.virtual.client.core.InstallStrategy;
+import io.bean.virtual.client.core.VirtualCore;
+import io.bean.virtual.client.ipc.VActivityManager;
+import io.bean.virtual.remote.InstallResult;
 
 public class MainActivity extends Activity {
 
@@ -32,7 +28,7 @@ public class MainActivity extends Activity {
     private Handler handler;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

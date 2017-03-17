@@ -1,8 +1,8 @@
-package io.bean.android.knock.util;
+package io.bean.android.dynamic.util;
 
 import android.util.Log;
 
-import io.bean.android.knock.common.Constants;
+import io.bean.android.dynamic.common.Constants;
 
 /**
  * @author Jerrybean on 2017/3/17.
