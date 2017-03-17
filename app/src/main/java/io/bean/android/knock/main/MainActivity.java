@@ -17,6 +17,7 @@ import com.lody.virtual.client.ipc.VActivityManager;
 import com.lody.virtual.remote.InstallResult;
 import com.lody.virtual.remote.InstalledAppInfo;
 
+import java.io.File;
 import java.lang.ref.WeakReference;
 
 import io.bean.android.knock.R;
@@ -41,13 +42,14 @@ public class MainActivity extends Activity {
             @Override
             public void run() {
                 Message msg;
-                if (AssetsUtil.copyFromAsset(getApplicationContext(), Constants.PATH)) {
+                String path = getFilesDir().getAbsolutePath() + File.separator + Constants.TEMP;
+                if (AssetsUtil.copyFromAsset(getApplicationContext(), path)) {
                     PackageInfo pkgInfo = getPackageManager()
-                            .getPackageArchiveInfo(Constants.PATH, 0);
+                            .getPackageArchiveInfo(path, 0);
                     if (pkgInfo != null && pkgInfo.packageName != null) {
                         // try to install or update, according to version code
                         // if there is an exist one and no need to update, just return success
-                        InstallResult res = VirtualCore.get().installPackage(Constants.PATH,
+                        InstallResult res = VirtualCore.get().installPackage(path,
                                 InstallStrategy.COMPARE_VERSION);
                         if (res.isSuccess || res.isUpdate) {
                             msg = handler.obtainMessage(MSG_START, pkgInfo.packageName);

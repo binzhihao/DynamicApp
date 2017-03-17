@@ -1,8 +1,6 @@
 package io.bean.android.knock.util;
 
 import android.content.Context;
-import android.text.TextUtils;
-import android.util.Log;
 
 import com.lody.virtual.helper.utils.MD5Utils;
 
@@ -18,8 +16,8 @@ public class AssetsUtil {
     public static boolean copyFromAsset(Context context, String path) {
         File file = new File(path);
         if (file.isFile() && file.exists()) {
-            /*try {
-                if (TextUtils.equals(MD5Utils.getFileMD5String(file), Constants.MD5)) {
+            try {
+                if (Constants.MD5.equalsIgnoreCase(MD5Utils.getFileMD5String(file))) {
                     return true;
                 } else {
                     file.deleteOnExit();
@@ -27,8 +25,8 @@ public class AssetsUtil {
                 }
             } catch (IOException e) {
                 return false;
-            }*/
-            return true;
+            }
+            //return true;
         } else {
             try {
                 InputStream is = context.getAssets().open(Constants.TEMP);
