@@ -40,19 +40,21 @@ public final class ActivityFixer {
 			e.printStackTrace();
 		}
 
+		// setTaskDescription to change the recent app list icon and title
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 			Intent intent = activity.getIntent();
-			ApplicationInfo applicationInfo = baseContext.getApplicationInfo();
-			PackageManager pm = activity.getPackageManager();
+			//ApplicationInfo applicationInfo = baseContext.getApplicationInfo();
+			//PackageManager pm = activity.getPackageManager();
 			if (intent != null && activity.isTaskRoot()) {
 				try {
-					String label = applicationInfo.loadLabel(pm) + "";
+					/*String label = applicationInfo.loadLabel(pm) + "";
 					Bitmap icon = null;
 					Drawable drawable = applicationInfo.loadIcon(pm);
 					if (drawable instanceof BitmapDrawable) {
 						icon = ((BitmapDrawable) drawable).getBitmap();
 					}
-					activity.setTaskDescription(new ActivityManager.TaskDescription(label, icon));
+					activity.setTaskDescription(new ActivityManager.TaskDescription(label, icon));*/
+					activity.setTaskDescription(new ActivityManager.TaskDescription(null, null));
 				} catch (Throwable e) {
 					e.printStackTrace();
 				}

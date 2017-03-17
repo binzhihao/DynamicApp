@@ -59,7 +59,7 @@ import mirror.android.util.Singleton;
 		UnstableProviderDied.class, GetCallingActivity.class, FinishActivity.class,
 		GetServices.class,
 
-		SetTaskDescription.class,})
+		/*SetTaskDescription.class*/})
 
 public class ActivityManagerPatch extends PatchDelegate<HookDelegate<IInterface>> {
 
