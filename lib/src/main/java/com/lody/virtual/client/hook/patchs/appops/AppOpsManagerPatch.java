@@ -4,34 +4,27 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 
-import com.lody.virtual.client.hook.base.PatchDelegate;
-import com.lody.virtual.client.hook.base.ReplaceCallingPkgHook;
+import com.lody.virtual.client.hook.base.PatchBinderDelegate;
 import com.lody.virtual.client.hook.base.ReplaceLastPkgHook;
 import com.lody.virtual.client.hook.base.StaticHook;
-import com.lody.virtual.client.hook.binders.AppOpsBinderDelegate;
 
 import java.lang.reflect.Method;
 
 import mirror.android.os.ServiceManager;
+import mirror.com.android.internal.app.IAppOpsService;
 
 /**
  * @author Lody
  *
- *  Fuck the AppOpsService.
+ * Fuck the AppOpsService.
  *
  * @see android.app.AppOpsManager
  */
 @TargetApi(Build.VERSION_CODES.KITKAT)
-public class AppOpsManagerPatch extends PatchDelegate<AppOpsBinderDelegate> {
+public class AppOpsManagerPatch extends PatchBinderDelegate {
 
-	@Override
-	protected AppOpsBinderDelegate createHookDelegate() {
-		return new AppOpsBinderDelegate();
-	}
-
-	@Override
-	public void inject() throws Throwable {
-		getHookDelegate().replaceService(Context.APP_OPS_SERVICE);
+	public AppOpsManagerPatch() {
+		super(IAppOpsService.Stub.TYPE, Context.APP_OPS_SERVICE);
 	}
 
 	@Override
@@ -47,34 +40,29 @@ public class AppOpsManagerPatch extends PatchDelegate<AppOpsBinderDelegate> {
 		addHook(new BaseHook("setMode", 1, 2));
 		addHook(new BaseHook("checkAudioOperation", 2, 3));
 		addHook(new BaseHook("setAudioRestriction", 2, -1));
-		addHook(new ReplaceCallingPkgHook("noteProxyOperation"));
+		addHook(new BaseHook("noteProxyOperation", 2, 3));
 		addHook(new ReplaceLastPkgHook("resetAllModes"));
 	}
 
 	private class BaseHook extends StaticHook {
 		final int pkgIndex;
 		final int uidIndex;
-		public BaseHook(String name, int uidIndex, int pkgIndex) {
+
+		BaseHook(String name, int uidIndex, int pkgIndex) {
 			super(name);
 			this.pkgIndex = pkgIndex;
 			this.uidIndex = uidIndex;
 		}
 
 		@Override
-		public boolean beforeHook(Object who, Method method, Object... args) {
+		public boolean beforeCall(Object who, Method method, Object... args) {
 			if (pkgIndex != -1 && args.length > pkgIndex && args[pkgIndex] instanceof String) {
-				String pkg = (String) args[pkgIndex];
-				if (isAppPkg(pkg)) {
-					args[pkgIndex] = getHostPkg();
-				}
+				args[pkgIndex] = getHostPkg();
+			}
+			if (uidIndex != -1 && args[uidIndex] instanceof Integer) {
+				args[uidIndex] = getRealUid();
 			}
 			return true;
 		}
 	}
-
-	@Override
-	public boolean isEnvBad() {
-		return ServiceManager.getService.call(Context.APP_OPS_SERVICE) != getHookDelegate();
-	}
-
 }

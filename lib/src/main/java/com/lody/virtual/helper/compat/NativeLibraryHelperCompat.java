@@ -30,7 +30,7 @@ public class NativeLibraryHelperCompat {
 
 	private static int copyNativeBinariesBeforeL(File apkFile, File sharedLibraryDir) {
 		try {
-			return Reflect.on(NativeLibraryHelper.class).call("copyNativeBinariesIfNeededLI", apkFile, sharedLibraryDir)
+			return Reflect.on(NativeLibraryHelper.TYPE).call("copyNativeBinariesIfNeededLI", apkFile, sharedLibraryDir)
 					.get();
 		} catch (Throwable e) {
 			e.printStackTrace();
@@ -71,8 +71,6 @@ public class NativeLibraryHelperCompat {
 			if (abi == null) {
 				VLog.e(TAG, "Not match any abi [%s].", apkFile.getPath());
 				return -1;
-			} else {
-				VLog.d(TAG, "Choose ABI : %s [%s].", abi, apkFile.getPath());
 			}
 			return NativeLibraryHelper.copyNativeBinaries.call(handle, sharedLibraryDir, abi);
 		} catch (Throwable e) {

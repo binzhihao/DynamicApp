@@ -4,17 +4,15 @@ import android.content.Intent;
 import android.content.pm.ResolveInfo;
 
 import com.lody.virtual.client.hook.base.Hook;
-import com.lody.virtual.client.local.VPackageManager;
+import com.lody.virtual.client.ipc.VPackageManager;
+import com.lody.virtual.helper.compat.ParceledListSliceCompat;
 import com.lody.virtual.os.VUserHandle;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Lody
- *
- * @see android.content.pm.IPackageManager#queryIntentServices(Intent, String, int, int)
  *
  *
  */
@@ -27,23 +25,14 @@ import java.util.List;
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public Object call(Object who, Method method, Object... args) throws Throwable {
 		int userId = VUserHandle.myUserId();
-		List<ResolveInfo> result = (List<ResolveInfo>) method.invoke(who, args);
 		List<ResolveInfo> appResult = VPackageManager.get().queryIntentServices((Intent) args[0],
 				(String) args[1], (Integer) args[2], userId);
-
-		if (result == null) {
-			result = new ArrayList<ResolveInfo>();
+		if (ParceledListSliceCompat.isReturnParceledListSlice(method)) {
+			return ParceledListSliceCompat.create(appResult);
 		}
-		if (!result.isEmpty()) {
-			return result;
-		}
-
-		if (appResult != null && !appResult.isEmpty()) {
-			return appResult;
-		}
-		return result;
+		return appResult;
 	}
 
 	@Override

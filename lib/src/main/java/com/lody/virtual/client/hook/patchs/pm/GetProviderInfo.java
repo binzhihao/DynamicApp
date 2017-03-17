@@ -3,7 +3,7 @@ package com.lody.virtual.client.hook.patchs.pm;
 import android.content.ComponentName;
 
 import com.lody.virtual.client.hook.base.Hook;
-import com.lody.virtual.client.local.VPackageManager;
+import com.lody.virtual.client.ipc.VPackageManager;
 import com.lody.virtual.os.VUserHandle;
 
 import java.lang.reflect.Method;
@@ -24,7 +24,7 @@ import java.lang.reflect.Method;
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public Object call(Object who, Method method, Object... args) throws Throwable {
 		ComponentName componentName = (ComponentName) args[0];
 		int flags = (int) args[1];
 		if (getHostPkg().equals(componentName.getPackageName())) {

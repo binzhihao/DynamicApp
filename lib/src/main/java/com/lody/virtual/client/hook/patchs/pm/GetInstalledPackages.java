@@ -4,7 +4,7 @@ import android.content.pm.PackageInfo;
 
 import com.lody.virtual.client.core.VirtualCore;
 import com.lody.virtual.client.hook.base.Hook;
-import com.lody.virtual.client.local.VPackageManager;
+import com.lody.virtual.client.ipc.VPackageManager;
 import com.lody.virtual.helper.compat.ParceledListSliceCompat;
 import com.lody.virtual.os.VUserHandle;
 
@@ -27,12 +27,12 @@ import java.util.List;
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public Object call(Object who, Method method, Object... args) throws Throwable {
 		int flags = (int) args[0];
 		int userId = VUserHandle.myUserId();
 		List<PackageInfo> packageInfos;
 		if (isAppProcess()) {
-			packageInfos = new ArrayList<PackageInfo>(VirtualCore.get().getAppCount());
+			packageInfos = new ArrayList<PackageInfo>(VirtualCore.get().getInstalledAppCount());
 		} else {
 			packageInfos = VirtualCore.get().getUnHookPackageManager().getInstalledPackages(flags);
 		}

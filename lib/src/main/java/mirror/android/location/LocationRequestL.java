@@ -1,12 +1,14 @@
 package mirror.android.location;
 
-import mirror.BooleanFieldDef;
-import mirror.ClassDef;
-import mirror.FieldDef;
+import mirror.RefBoolean;
+import mirror.RefClass;
+import mirror.RefMethod;
+import mirror.RefObject;
 
 public class LocationRequestL {
-    public static Class<?> Class = ClassDef.init(LocationRequestL.class, "android.location.LocationRequest");
-    public static BooleanFieldDef mHideFromAppOps;
-    public static FieldDef<Object> mWorkSource;
-    public static FieldDef<String> mProvider;
+    public static Class<?> TYPE = RefClass.load(LocationRequestL.class, "android.location.LocationRequest");
+    public static RefBoolean mHideFromAppOps;
+    public static RefObject<Object> mWorkSource;
+    public static RefObject<String> mProvider;
+    public static RefMethod<String> getProvider;
 }

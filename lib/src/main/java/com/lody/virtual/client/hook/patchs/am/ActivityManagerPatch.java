@@ -1,7 +1,9 @@
 package com.lody.virtual.client.hook.patchs.am;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.IInterface;
 
 import com.lody.virtual.client.core.VirtualCore;
@@ -11,17 +13,24 @@ import com.lody.virtual.client.hook.base.HookDelegate;
 import com.lody.virtual.client.hook.base.Patch;
 import com.lody.virtual.client.hook.base.PatchDelegate;
 import com.lody.virtual.client.hook.base.ReplaceCallingPkgHook;
+import com.lody.virtual.client.hook.base.ReplaceLastUidHook;
+import com.lody.virtual.client.hook.base.ResultStaticHook;
 import com.lody.virtual.client.hook.base.StaticHook;
+import com.lody.virtual.client.ipc.VActivityManager;
+import com.lody.virtual.remote.AppTaskInfo;
 
 import java.lang.reflect.Method;
+import java.util.List;
 
 import mirror.android.app.ActivityManagerNative;
 import mirror.android.app.IActivityManager;
+import mirror.android.content.pm.ParceledListSlice;
 import mirror.android.os.ServiceManager;
 import mirror.android.util.Singleton;
 
 /**
  * @author Lody
+ *
  * @see IActivityManager
  * @see android.app.ActivityManager
  */
@@ -54,33 +63,21 @@ import mirror.android.util.Singleton;
 
 public class ActivityManagerPatch extends PatchDelegate<HookDelegate<IInterface>> {
 
-
-	@Override
-	protected HookDelegate<IInterface> createHookDelegate() {
-		return new HookDelegate<IInterface>() {
-			@Override
-			protected IInterface createInterface() {
-				return ActivityManagerNative.getDefault.call();
-			}
-		};
+	public ActivityManagerPatch() {
+		super(new HookDelegate<IInterface>(ActivityManagerNative.getDefault.call()));
 	}
 
 	@Override
 	public void inject() throws Throwable {
-		if (ActivityManagerNative.gDefault.type() == IActivityManager.Class) {
+		if (ActivityManagerNative.gDefault.type() == IActivityManager.TYPE) {
 			ActivityManagerNative.gDefault.set(getHookDelegate().getProxyInterface());
 
-		} else if (ActivityManagerNative.gDefault.type() == Singleton.Class) {
+		} else if (ActivityManagerNative.gDefault.type() == Singleton.TYPE) {
 			Object gDefault = ActivityManagerNative.gDefault.get();
 			Singleton.mInstance.set(gDefault, getHookDelegate().getProxyInterface());
 		}
 
-		HookBinderDelegate hookAMBinder = new HookBinderDelegate() {
-			@Override
-			protected IInterface createInterface() {
-				return getHookDelegate().getBaseInterface();
-			}
-		};
+		HookBinderDelegate hookAMBinder = new HookBinderDelegate(getHookDelegate().getBaseInterface());
 		hookAMBinder.copyHooks(getHookDelegate());
 		ServiceManager.sCache.get().put(Context.ACTIVITY_SERVICE, hookAMBinder);
 	}
@@ -89,15 +86,46 @@ public class ActivityManagerPatch extends PatchDelegate<HookDelegate<IInterface>
 	protected void onBindHooks() {
 		super.onBindHooks();
 		if (VirtualCore.get().isVAppProcess()) {
+			addHook(new ReplaceLastUidHook("checkPermissionWithToken"));
 			addHook(new isUserRunning());
+			addHook(new ResultStaticHook("updateConfiguration", 0));
 			addHook(new ReplaceCallingPkgHook("setAppLockedVerifying"));
 			addHook(new StaticHook("checkUriPermission") {
 				@Override
-				public Object afterHook(Object who, Method method, Object[] args, Object result) throws Throwable {
+				public Object afterCall(Object who, Method method, Object[] args, Object result) throws Throwable {
 					return PackageManager.PERMISSION_GRANTED;
 				}
 			});
+			addHook(new StaticHook("getRecentTasks") {
+				@Override
+				public Object call(Object who, Method method, Object... args) throws Throwable {
+					//noinspection unchecked
+					Object _infos = method.invoke(who, args);
+					List<ActivityManager.RecentTaskInfo> infos =
+							ParceledListSlice.TYPE != null && ParceledListSlice.TYPE.isInstance(_infos)
+									? ParceledListSlice.getList.call(_infos)
+									: (List)_infos;
+					for (ActivityManager.RecentTaskInfo info : infos) {
+						AppTaskInfo taskInfo = VActivityManager.get().getTaskInfo(info.id);
+						if (taskInfo == null) {
+							continue;
+						}
+						if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+							info.baseActivity = taskInfo.baseActivity;
+							info.topActivity = taskInfo.topActivity;
+						}
+						info.origActivity = taskInfo.baseActivity;
+						info.baseIntent = taskInfo.baseIntent;
+					}
+					return _infos;
+				}
+			});
 		}
+	}
+
+	@Override
+	public boolean isEnvBad() {
+		return ActivityManagerNative.getDefault.call() != getHookDelegate().getProxyInterface();
 	}
 
 	private class isUserRunning extends Hook {
@@ -107,14 +135,9 @@ public class ActivityManagerPatch extends PatchDelegate<HookDelegate<IInterface>
 		}
 
 		@Override
-		public boolean beforeHook(Object who, Method method, Object... args) {
+		public Object call(Object who, Method method, Object... args) {
 			int userId = (int) args[0];
 			return userId == 0;
 		}
-	}
-
-	@Override
-	public boolean isEnvBad() {
-		return ActivityManagerNative.getDefault.call() != getHookDelegate().getProxyInterface();
 	}
 }

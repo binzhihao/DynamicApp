@@ -3,7 +3,7 @@ package com.lody.virtual.client.hook.patchs.am;
 import java.lang.reflect.Method;
 
 import com.lody.virtual.client.hook.base.Hook;
-import com.lody.virtual.client.local.VActivityManager;
+import com.lody.virtual.client.ipc.VActivityManager;
 
 import android.content.Intent;
 import android.os.IBinder;
@@ -22,7 +22,7 @@ import android.os.IBinder;
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public Object call(Object who, Method method, Object... args) throws Throwable {
 		IBinder token = (IBinder) args[0];
 		Intent service = (Intent) args[1];
 		boolean doRebind = (boolean) args[2];

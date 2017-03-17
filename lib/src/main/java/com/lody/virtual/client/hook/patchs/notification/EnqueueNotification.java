@@ -1,46 +1,38 @@
 package com.lody.virtual.client.hook.patchs.notification;
 
-import java.lang.reflect.Method;
-
-import com.lody.virtual.client.core.VirtualCore;
-import com.lody.virtual.client.hook.base.Hook;
-import com.lody.virtual.client.hook.patchs.notification.compat.NotificationHandler;
-
 import android.app.Notification;
+
+import com.lody.virtual.client.hook.base.Hook;
+import com.lody.virtual.client.ipc.VNotificationManager;
+import com.lody.virtual.helper.utils.ArrayUtils;
+
+import java.lang.reflect.Method;
 
 /**
  * @author Lody
  */
 /* package */ class EnqueueNotification extends Hook {
 
-	@Override
-	public String getName() {
-		return "enqueueNotification";
-	}
+    @Override
+    public String getName() {
+        return "enqueueNotification";
+    }
 
-	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
-		String pkgName = (String) args[0];
-		boolean needDeal = false;
-		if (!VirtualCore.get().isHostPackageName(pkgName)) {
-			args[0] = getHostPkg();
-			needDeal = true;
-		}
-		if (needDeal) {
-			for (int i = 0; i < args.length; i++) {
-				if (args[i] instanceof Notification) {
-					Notification notification = (Notification) args[i];
-					NotificationHandler.Result result = NotificationHandler.getInstance()
-							.dealNotification(getHostContext(), notification, pkgName);
-					if (result.code == NotificationHandler.RESULT_CODE_DONT_SHOW) {
-						return 0;
-					} else if (result.code == NotificationHandler.RESULT_CODE_REPLACE) {
-						args[i] = result.notification;
-					}
-					break;
-				}
-			}
-		}
-		return method.invoke(who, args);
-	}
+    @Override
+    public Object call(Object who, Method method, Object... args) throws Throwable {
+        //enqueueNotification(pkg, id, notification, idOut);
+        String pkg = (String) args[0];
+        int notificationIndex = ArrayUtils.indexOfFirst(args, Notification.class);
+        int idIndex = ArrayUtils.indexOfFirst(args, Integer.class);
+        int id = (int) args[idIndex];
+        id = VNotificationManager.get().dealNotificationId(id, pkg, null, getAppUserId());
+        args[idIndex] = id;
+        Notification notification = (Notification) args[notificationIndex];
+        if (!VNotificationManager.get().dealNotification(id, notification, pkg)) {
+            return 0;
+        }
+        VNotificationManager.get().addNotification(id, null, pkg, getAppUserId());
+        args[0] = getHostPkg();
+        return method.invoke(who, args);
+    }
 }

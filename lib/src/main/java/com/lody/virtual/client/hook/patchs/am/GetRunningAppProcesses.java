@@ -3,7 +3,8 @@ package com.lody.virtual.client.hook.patchs.am;
 import android.app.ActivityManager;
 
 import com.lody.virtual.client.hook.base.Hook;
-import com.lody.virtual.client.local.VActivityManager;
+import com.lody.virtual.client.ipc.VActivityManager;
+import com.lody.virtual.os.VUserHandle;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
 	}
 
 	@Override
-	public synchronized Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public synchronized Object call(Object who, Method method, Object... args) throws Throwable {
 		List<ActivityManager.RunningAppProcessInfo> infoList = (List<ActivityManager.RunningAppProcessInfo>) method
 				.invoke(who, args);
 		if (infoList != null) {
@@ -33,7 +34,7 @@ import java.util.List;
 						info.processName = processName;
 					}
 					info.pkgList = pkgList.toArray(new String[pkgList.size()]);
-					info.uid = VActivityManager.get().getUidByPid(info.pid);
+					info.uid = VUserHandle.getAppId(VActivityManager.get().getUidByPid(info.pid));
 				}
 			}
 		}

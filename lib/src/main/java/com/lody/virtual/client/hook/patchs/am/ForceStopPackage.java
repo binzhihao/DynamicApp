@@ -1,7 +1,7 @@
 package com.lody.virtual.client.hook.patchs.am;
 
 import com.lody.virtual.client.hook.base.Hook;
-import com.lody.virtual.client.local.VActivityManager;
+import com.lody.virtual.client.ipc.VActivityManager;
 import com.lody.virtual.os.VUserHandle;
 
 import java.lang.reflect.Method;
@@ -9,8 +9,6 @@ import java.lang.reflect.Method;
 /**
  * @author Lody
  *
- *
- * @see android.app.IActivityManager#forceStopPackage(String, int)
  */
 /* package */ class ForceStopPackage extends Hook {
 
@@ -20,7 +18,7 @@ import java.lang.reflect.Method;
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public Object call(Object who, Method method, Object... args) throws Throwable {
 		String pkg = (String) args[0];
 		int userId = VUserHandle.myUserId();
 		VActivityManager.get().killAppByPkg(pkg, userId);

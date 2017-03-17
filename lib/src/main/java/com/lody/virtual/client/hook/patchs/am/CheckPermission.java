@@ -1,8 +1,8 @@
 package com.lody.virtual.client.hook.patchs.am;
 
-import android.Manifest;
 import android.content.pm.PackageManager;
 
+import com.lody.virtual.client.env.SpecialComponentList;
 import com.lody.virtual.client.hook.base.Hook;
 
 import java.lang.reflect.Method;
@@ -10,11 +10,8 @@ import java.lang.reflect.Method;
 /**
  * @author Lody
  *
- * @see android.app.ActivityManagerNative#checkPermission(String, int, int)
- *
  */
-
-public class CheckPermission extends Hook {
+/*package*/ class CheckPermission extends Hook {
 
 	@Override
 	public String getName() {
@@ -22,14 +19,15 @@ public class CheckPermission extends Hook {
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public Object call(Object who, Method method, Object... args) throws Throwable {
 		String permission = (String) args[0];
-		if (Manifest.permission.ACCOUNT_MANAGER.equals(permission)) {
+		if (SpecialComponentList.isWhitePermission(permission)) {
 			return PackageManager.PERMISSION_GRANTED;
 		}
-		if ("com.google.android.providers.settings.permission.WRITE_GSETTINGS".equals(permission)) {
+		if (permission.startsWith("com.google")) {
 			return PackageManager.PERMISSION_GRANTED;
 		}
+		args[args.length - 1] = getRealUid();
 		return method.invoke(who, args);
 	}
 
@@ -37,4 +35,5 @@ public class CheckPermission extends Hook {
 	public boolean isEnable() {
 		return isAppProcess();
 	}
+
 }

@@ -4,8 +4,8 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 import com.lody.virtual.client.hook.base.Hook;
-import com.lody.virtual.client.local.VActivityManager;
-import com.lody.virtual.helper.proto.AppTaskInfo;
+import com.lody.virtual.client.ipc.VActivityManager;
+import com.lody.virtual.remote.AppTaskInfo;
 
 import android.app.ActivityManager;
 
@@ -24,11 +24,10 @@ import android.app.ActivityManager;
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public Object call(Object who, Method method, Object... args) throws Throwable {
 		List<ActivityManager.RunningTaskInfo> runningTaskInfos = (List<ActivityManager.RunningTaskInfo>) method
 				.invoke(who, args);
-		for (int i = 0; i < runningTaskInfos.size(); i++) {
-			ActivityManager.RunningTaskInfo info = runningTaskInfos.get(i);
+		for (ActivityManager.RunningTaskInfo info : runningTaskInfos) {
 			AppTaskInfo taskInfo = VActivityManager.get().getTaskInfo(info.id);
 			if (taskInfo != null) {
 				info.topActivity = taskInfo.topActivity;

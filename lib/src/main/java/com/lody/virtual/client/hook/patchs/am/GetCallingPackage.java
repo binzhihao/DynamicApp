@@ -1,17 +1,15 @@
 package com.lody.virtual.client.hook.patchs.am;
 
-import java.lang.reflect.Method;
+import android.os.IBinder;
 
 import com.lody.virtual.client.hook.base.Hook;
-import com.lody.virtual.client.local.VActivityManager;
+import com.lody.virtual.client.ipc.VActivityManager;
 
-import android.os.IBinder;
+import java.lang.reflect.Method;
 
 /**
  * @author Lody
  *
- *
- * @see android.app.IActivityManager#getCallingPackage(IBinder)
  */
 /* package */ class GetCallingPackage extends Hook {
 
@@ -21,13 +19,9 @@ import android.os.IBinder;
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public Object call(Object who, Method method, Object... args) throws Throwable {
 		IBinder token = (IBinder) args[0];
-		String pkg = VActivityManager.get().getPackageForToken(token);
-		if (pkg != null) {
-			return pkg;
-		}
-		return method.invoke(who, args);
+		return VActivityManager.get().getCallingPackage(token);
 	}
 
 	@Override

@@ -3,7 +3,7 @@ package com.lody.virtual.client.hook.patchs.pm;
 import android.content.pm.ApplicationInfo;
 
 import com.lody.virtual.client.hook.base.Hook;
-import com.lody.virtual.client.local.VPackageManager;
+import com.lody.virtual.client.ipc.VPackageManager;
 import com.lody.virtual.helper.compat.ParceledListSliceCompat;
 import com.lody.virtual.os.VUserHandle;
 
@@ -22,7 +22,7 @@ import java.util.List;
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public Object call(Object who, Method method, Object... args) throws Throwable {
 
 		int flags = (Integer) args[0];
 		int userId = VUserHandle.myUserId();

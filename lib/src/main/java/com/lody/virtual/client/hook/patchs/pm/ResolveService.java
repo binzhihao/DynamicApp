@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.content.pm.ResolveInfo;
 
 import com.lody.virtual.client.hook.base.Hook;
-import com.lody.virtual.client.local.VPackageManager;
+import com.lody.virtual.client.ipc.VPackageManager;
 import com.lody.virtual.os.VUserHandle;
 
 import java.lang.reflect.Method;
@@ -24,7 +24,7 @@ import java.lang.reflect.Method;
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public Object call(Object who, Method method, Object... args) throws Throwable {
 		Intent intent = (Intent) args[0];
 		String resolvedType = (String) args[1];
 		int flags = (int) args[2];

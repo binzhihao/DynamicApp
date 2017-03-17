@@ -1,7 +1,7 @@
 package com.lody.virtual.client.hook.patchs.pm;
 
 import com.lody.virtual.client.hook.base.Hook;
-import com.lody.virtual.client.local.VPackageManager;
+import com.lody.virtual.client.ipc.VPackageManager;
 import com.lody.virtual.os.VUserHandle;
 
 import java.lang.reflect.Method;
@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public Object call(Object who, Method method, Object... args) throws Throwable {
 		String permName = (String) args[0];
 		String pkgName = (String) args[1];
 		int userId = VUserHandle.myUserId();
@@ -28,8 +28,8 @@ import java.lang.reflect.Method;
 	}
 
 	@Override
-	public Object afterHook(Object who, Method method, Object[] args, Object result) throws Throwable {
-		return super.afterHook(who, method, args, result);
+	public Object afterCall(Object who, Method method, Object[] args, Object result) throws Throwable {
+		return super.afterCall(who, method, args, result);
 	}
 
 	@Override

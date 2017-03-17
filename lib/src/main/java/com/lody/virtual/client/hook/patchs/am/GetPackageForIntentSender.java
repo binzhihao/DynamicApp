@@ -7,8 +7,8 @@ import android.os.IBinder;
 import android.os.IInterface;
 
 import com.lody.virtual.client.hook.base.Hook;
-import com.lody.virtual.client.local.VActivityManager;
-import com.lody.virtual.helper.proto.PendingIntentData;
+import com.lody.virtual.client.ipc.VActivityManager;
+import com.lody.virtual.remote.PendingIntentData;
 
 import java.lang.reflect.Method;
 
@@ -26,7 +26,7 @@ public class GetPackageForIntentSender extends Hook {
     }
 
     @Override
-    public Object onHook(Object who, Method method, Object... args) throws Throwable {
+    public Object call(Object who, Method method, Object... args) throws Throwable {
         IInterface sender = (IInterface) args[0];
         if (sender != null) {
             IBinder binder = sender.asBinder();
@@ -46,7 +46,7 @@ public class GetPackageForIntentSender extends Hook {
                 }
             }
         }
-        return super.onHook(who, method, args);
+        return super.call(who, method, args);
     }
 
     @Override

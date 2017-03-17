@@ -342,4 +342,6 @@ public class InstrumentationDelegate extends Instrumentation {
 	public UiAutomation getUiAutomation() {
 		return base.getUiAutomation();
 	}
+
+
 }

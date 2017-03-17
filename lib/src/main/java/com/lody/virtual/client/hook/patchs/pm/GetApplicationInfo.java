@@ -3,7 +3,7 @@ package com.lody.virtual.client.hook.patchs.pm;
 import android.content.pm.ApplicationInfo;
 
 import com.lody.virtual.client.hook.base.Hook;
-import com.lody.virtual.client.local.VPackageManager;
+import com.lody.virtual.client.ipc.VPackageManager;
 import com.lody.virtual.helper.utils.ComponentUtils;
 import com.lody.virtual.os.VUserHandle;
 
@@ -12,7 +12,6 @@ import java.lang.reflect.Method;
 /**
  * @author Lody
  *
- * @see android.content.pm.IPackageManager#getApplicationInfo(String, int, int)
  */
 /* package */ class GetApplicationInfo extends Hook {
 
@@ -22,7 +21,7 @@ import java.lang.reflect.Method;
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public Object call(Object who, Method method, Object... args) throws Throwable {
 		String pkg = (String) args[0];
 		int flags = (int) args[1];
 		if (getHostPkg().equals(pkg)) {

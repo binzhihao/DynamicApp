@@ -10,8 +10,8 @@ import android.os.IInterface;
 
 import com.lody.virtual.client.core.VirtualCore;
 import com.lody.virtual.client.hook.base.Hook;
-import com.lody.virtual.client.hook.secondary.HackServiceConnection;
-import com.lody.virtual.client.local.VActivityManager;
+import com.lody.virtual.client.hook.secondary.ServiceConnectionDelegate;
+import com.lody.virtual.client.ipc.VActivityManager;
 import com.lody.virtual.os.VUserHandle;
 
 import java.lang.reflect.Method;
@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public Object call(Object who, Method method, Object... args) throws Throwable {
 		IInterface caller = (IInterface) args[0];
 		IBinder token = (IBinder) args[1];
 		Intent service = (Intent) args[2];
@@ -35,30 +35,26 @@ import java.lang.reflect.Method;
 		IServiceConnection conn = (IServiceConnection) args[4];
 		int flags = (int) args[5];
 		int userId = VUserHandle.myUserId();
-		if (isServiceProcess()) {
+		if (isServerProcess()) {
 			userId = service.getIntExtra("_VA_|_user_id_", VUserHandle.USER_NULL);
+		}
+		if (userId == VUserHandle.USER_NULL) {
+			return method.invoke(who, args);
 		}
 		ServiceInfo serviceInfo = VirtualCore.get().resolveServiceInfo(service, userId);
 		if (serviceInfo != null) {
-			String pkgName = serviceInfo.packageName;
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 				service.setComponent(new ComponentName(serviceInfo.packageName, serviceInfo.name));
 			}
-			if (isAppPkg(pkgName)) {
-				HackServiceConnection hackConn = HackServiceConnection.sHackConns.get(conn.asBinder());
-				if (hackConn == null) {
-//					hackConn = new HackServiceConnection(VClientImpl.getClient().getCurrentApplication(), conn);
-//					HackServiceConnection.sHackConns.put(conn.asBinder(), hackConn);
-				}
-				return VActivityManager.get().bindService(caller.asBinder(), token, service, resolvedType,
-						conn, flags);
-			}
+			conn = ServiceConnectionDelegate.getDelegate(conn);
+			return VActivityManager.get().bindService(caller.asBinder(), token, service, resolvedType,
+                    conn, flags, userId);
 		}
 		return method.invoke(who, args);
 	}
 
 	@Override
 	public boolean isEnable() {
-		return isAppProcess() || isServiceProcess();
+		return isAppProcess() || isServerProcess();
 	}
 }

@@ -3,8 +3,8 @@ package com.lody.virtual.client.hook.patchs.am;
 import android.app.IServiceConnection;
 
 import com.lody.virtual.client.hook.base.Hook;
-import com.lody.virtual.client.hook.secondary.HackServiceConnection;
-import com.lody.virtual.client.local.VActivityManager;
+import com.lody.virtual.client.hook.secondary.ServiceConnectionDelegate;
+import com.lody.virtual.client.ipc.VActivityManager;
 
 import java.lang.reflect.Method;
 
@@ -21,17 +21,17 @@ import java.lang.reflect.Method;
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public Object call(Object who, Method method, Object... args) throws Throwable {
 		IServiceConnection conn = (IServiceConnection) args[0];
-		if (conn != null) {
-			HackServiceConnection hackConn = null;//HackServiceConnection.sHackConns.remove(conn.asBinder());
-			return VActivityManager.get().unbindService(hackConn != null ? hackConn : conn);
+		ServiceConnectionDelegate delegate = ServiceConnectionDelegate.removeDelegate(conn);
+		if (delegate == null) {
+			return method.invoke(who, args);
 		}
-		return false;
+		return VActivityManager.get().unbindService(delegate);
 	}
 
 	@Override
 	public boolean isEnable() {
-		return isAppProcess() || isServiceProcess();
+		return isAppProcess() || isServerProcess();
 	}
 }

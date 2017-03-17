@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
  * @author Lody
  *
  *
- *         原型： public int checkGrantUriPermission(int callingUid, String
+ *         public int checkGrantUriPermission(int callingUid, String
  *         targetPkg, Uri uri, int modeFlags)
  */
 /* package */ class CheckGrantUriPermission extends Hook {
@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public Object call(Object who, Method method, Object... args) throws Throwable {
 		HookUtils.replaceFirstAppPkg(args);
 		return method.invoke(who, args);
 	}

@@ -8,7 +8,7 @@ import com.lody.virtual.client.hook.base.Hook;
  * @author Lody
  */
 
-public class UnstableProviderDied extends Hook {
+/*package*/ class UnstableProviderDied extends Hook {
 
 	@Override
 	public String getName() {
@@ -16,7 +16,7 @@ public class UnstableProviderDied extends Hook {
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
+	public Object call(Object who, Method method, Object... args) throws Throwable {
 		if (args[0] == null) {
 			return 0;
 		}

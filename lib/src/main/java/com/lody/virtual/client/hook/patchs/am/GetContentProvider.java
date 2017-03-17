@@ -1,14 +1,13 @@
 package com.lody.virtual.client.hook.patchs.am;
 
-import android.content.pm.ApplicationInfo;
 import android.content.pm.ProviderInfo;
 import android.os.IInterface;
 
-import com.lody.virtual.client.env.VirtualRuntime;
 import com.lody.virtual.client.hook.base.Hook;
 import com.lody.virtual.client.hook.providers.ProviderHook;
-import com.lody.virtual.client.local.VActivityManager;
-import com.lody.virtual.client.local.VPackageManager;
+import com.lody.virtual.client.ipc.VActivityManager;
+import com.lody.virtual.client.ipc.VPackageManager;
+import com.lody.virtual.client.stub.StubManifest;
 import com.lody.virtual.os.VUserHandle;
 
 import java.lang.reflect.Method;
@@ -25,49 +24,42 @@ import mirror.android.app.IActivityManager;
 	}
 
 	@Override
-	public Object onHook(Object who, Method method, Object... args) throws Throwable {
-		String name = (String) args[getProviderNameIndex()];
+	public Object call(Object who, Method method, Object... args) throws Throwable {
+		int nameIdx = getProviderNameIndex();
+		String name = (String) args[nameIdx];
 		int userId = VUserHandle.myUserId();
-		Object holder;
 		ProviderInfo info = VPackageManager.get().resolveContentProvider(name, 0, userId);
-		if (info != null) {
-			if (info.processName.equals(VirtualRuntime.getProcessName())) {
-				return IActivityManager.ContentProviderHolder.ctor.newInstance(info);
-			}
-			IInterface client = VActivityManager.get().acquireProviderClient(userId, info);
-			holder = IActivityManager.ContentProviderHolder.ctor.newInstance(info);
-			IActivityManager.ContentProviderHolder.info.set(holder, info);
-			IActivityManager.ContentProviderHolder.provider.set(holder, client);
-			IActivityManager.ContentProviderHolder.noReleaseNeeded.set(holder, true);
-		} else {
-			 holder = method.invoke(who, args);
-		}
-		if (holder == null) {
-			return null;
-		}
-		boolean externalCP = info == null;
-		if (externalCP) {
-			info = IActivityManager.ContentProviderHolder.info.get(holder);
-			if (!shouldVisible(info)) {
+		if (info != null && info.enabled && isAppPkg(info.packageName)) {
+			int targetVPid = VActivityManager.get().initProcess(info.packageName, info.processName, userId);
+			if (targetVPid == -1) {
 				return null;
 			}
-		}
-		IInterface client = IActivityManager.ContentProviderHolder.provider.get(holder);
-		ProviderHook.HookFetcher fetcher = ProviderHook.fetchHook(info.authority);
-		if (fetcher != null) {
-			ProviderHook hook = fetcher.fetch(externalCP, info, client);
-			IInterface proxyClient = ProviderHook.createProxy(client, hook);
-			if (proxyClient != null) {
-				IActivityManager.ContentProviderHolder.provider.set(holder, proxyClient);
+			args[nameIdx] = StubManifest.getStubAuthority(targetVPid);
+			Object holder = method.invoke(who, args);
+			if (holder == null) {
+				return null;
 			}
+			IInterface provider = IActivityManager.ContentProviderHolder.provider.get(holder);
+			if (provider != null) {
+				provider = VActivityManager.get().acquireProviderClient(userId, info);
+			}
+			IActivityManager.ContentProviderHolder.provider.set(holder, provider);
+			IActivityManager.ContentProviderHolder.info.set(holder, info);
+			return holder;
 		}
-		return holder;
+		Object holder = method.invoke(who, args);
+		if (holder != null) {
+			IInterface provider = IActivityManager.ContentProviderHolder.provider.get(holder);
+			info = IActivityManager.ContentProviderHolder.info.get(holder);
+			if (provider != null) {
+				provider = ProviderHook.createProxy(true, info.authority, provider);
+			}
+			IActivityManager.ContentProviderHolder.provider.set(holder, provider);
+			return holder;
+		}
+		return null;
 	}
 
-	private boolean shouldVisible(ProviderInfo info) {
-		return info.packageName.equals(getHostPkg())
-				|| (info.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
-	}
 
 	public int getProviderNameIndex() {
 		return 1;
