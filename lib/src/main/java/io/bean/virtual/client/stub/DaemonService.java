@@ -33,7 +33,7 @@ public class DaemonService extends Service {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		// fix: android 7.1 show app running message on notification
+		// android 7.1 will show app running message on notification
         //startService(new Intent(this, InnerService.class));
         //startForeground(NOTIFY_ID, new Notification());
 	}
