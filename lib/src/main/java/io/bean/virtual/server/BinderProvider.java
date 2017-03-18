@@ -25,7 +25,7 @@ import io.bean.virtual.server.pm.VPackageManagerService;
 import io.bean.virtual.server.pm.VUserManagerService;
 
 /**
- * @author Lody
+ * @author JerryBean
  */
 public final class BinderProvider extends ContentProvider {
 
@@ -34,7 +34,7 @@ public final class BinderProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
         Context context = getContext();
-        DaemonService.startup(context);
+        //DaemonService.startup(context);
         if (!VirtualCore.get().isStartup()) {
             return true;
         }

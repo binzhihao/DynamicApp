@@ -8,7 +8,7 @@ import android.os.IBinder;
 
 
 /**
- * @author Lody
+ * @author Jerrybean
  *
  */
 public class DaemonService extends Service {
@@ -33,9 +33,9 @@ public class DaemonService extends Service {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-        startService(new Intent(this, InnerService.class));
-        startForeground(NOTIFY_ID, new Notification());
-
+		// fix: android 7.1 show app running message on notification
+        //startService(new Intent(this, InnerService.class));
+        //startForeground(NOTIFY_ID, new Notification());
 	}
 
 	@Override
