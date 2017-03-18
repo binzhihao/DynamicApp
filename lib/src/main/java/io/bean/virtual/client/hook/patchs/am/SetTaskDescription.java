@@ -15,11 +15,8 @@ import io.bean.virtual.helper.utils.DrawableUtils;
 
 import java.lang.reflect.Method;
 
-/**
- * @author prife
- */
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-/* package */ class SetTaskDescription extends Hook {
+class SetTaskDescription extends Hook {
     @Override
     public String getName() {
         return "setTaskDescription";
@@ -32,7 +29,8 @@ import java.lang.reflect.Method;
         Bitmap icon = td.getIcon();
 
         // If the activity label/icon isn't specified, the application's label/icon is shown instead
-        // Android usually does that for us, but in this case we want info about the contained app, not VIrtualApp itself
+        // Android usually does that for us, but in this case we want info about the contained app,
+        // not VirtualApp itself
         if (label == null || icon == null) {
             Application app = VClientImpl.get().getCurrentApplication();
             if (app != null) {
@@ -51,11 +49,6 @@ import java.lang.reflect.Method;
                     e.printStackTrace();
                 }
             }
-        }
-
-        TaskDescriptionDelegate descriptionDelegate = VirtualCore.get().getTaskDescriptionDelegate();
-        if (descriptionDelegate != null) {
-            td = descriptionDelegate.getTaskDescription(td);
         }
 
         args[1] = td;

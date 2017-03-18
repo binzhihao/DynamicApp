@@ -2,10 +2,6 @@ package io.bean.virtual.client.stub;
 
 import java.util.Locale;
 
-/**
- * @author Lody
- */
-
 public class StubManifest {
     public static final String STUB_DEF_AUTHORITY = "virtual_stub_";
     public static String STUB_ACTIVITY = StubActivity.class.getName();

@@ -27,13 +27,7 @@ import io.bean.virtual.server.interfaces.IAppRequestListener;
 import java.io.File;
 import java.lang.reflect.Method;
 
-/**
- * @author Lody
- */
-/* package */ class StartActivity extends Hook {
-
-    private static final String SCHEME_FILE = "file";
-    private static final String SCHEME_PACKAGE = "package";
+class StartActivity extends Hook {
 
     @Override
     public String getName() {
@@ -55,21 +49,6 @@ import java.lang.reflect.Method;
 
         if (ComponentUtils.isStubComponent(intent)) {
             return method.invoke(who, args);
-        }
-
-        if (Intent.ACTION_INSTALL_PACKAGE.equals(intent.getAction())
-                || (Intent.ACTION_VIEW.equals(intent.getAction())
-                && "application/vnd.android.package-archive".equals(intent.getType()))) {
-            if (handleInstallRequest(intent)) {
-                return 0;
-            }
-        } else if ((Intent.ACTION_UNINSTALL_PACKAGE.equals(intent.getAction())
-                || Intent.ACTION_DELETE.equals(intent.getAction()))
-                && "package".equals(intent.getScheme())) {
-
-            if (handleUninstallRequest(intent)) {
-                return 0;
-            }
         }
 
         String resultWho = null;
@@ -126,43 +105,6 @@ import java.lang.reflect.Method;
             }
         }
         return res;
-    }
-
-
-    private boolean handleInstallRequest(Intent intent) {
-        IAppRequestListener listener = VirtualCore.get().getAppRequestListener();
-        if (listener != null) {
-            Uri packageUri = intent.getData();
-            if (SCHEME_FILE.equals(packageUri.getScheme())) {
-                File sourceFile = new File(packageUri.getPath());
-                try {
-                    listener.onRequestInstall(sourceFile.getPath());
-                    return true;
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }
-        return false;
-    }
-
-    private boolean handleUninstallRequest(Intent intent) {
-        IAppRequestListener listener = VirtualCore.get().getAppRequestListener();
-        if (listener != null) {
-            Uri packageUri = intent.getData();
-            if (SCHEME_PACKAGE.equals(packageUri.getScheme())) {
-                String pkg = packageUri.getSchemeSpecificPart();
-                try {
-                    listener.onRequestUninstall(pkg);
-                    return true;
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }
-        return false;
     }
 
 }

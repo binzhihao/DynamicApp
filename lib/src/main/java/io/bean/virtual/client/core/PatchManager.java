@@ -58,16 +58,10 @@ import static android.os.Build.VERSION_CODES.LOLLIPOP_MR1;
 import static android.os.Build.VERSION_CODES.M;
 import static android.os.Build.VERSION_CODES.N;
 
-/**
- * @author Lody
- *
- */
 public final class PatchManager {
 
     private static PatchManager sPatchManager = new PatchManager();
     private static boolean sInit;
-
-	private static final String TAG = PatchManager.class.getSimpleName();
 
 	private Map<Class<?>, Injectable> injectTable = new HashMap<>(13);
 
