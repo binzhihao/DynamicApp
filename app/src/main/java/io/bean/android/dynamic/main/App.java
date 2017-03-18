@@ -17,7 +17,7 @@ public class App extends Application {
     private static final String TAG = Constants.CONFIG + "_app";
 
     private static final String[] GMS_PKG = {
-            "com.google.android.gms",
+            //"com.google.android.gms",
     };
 
     @Override
