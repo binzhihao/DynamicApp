@@ -37,7 +37,7 @@ public class NativeEngine {
 
     static {
         try {
-            System.loadLibrary("va-native");
+            System.loadLibrary("hook");
         } catch (Throwable e) {
             VLog.e(TAG, VLog.getStackTraceString(e));
         }
