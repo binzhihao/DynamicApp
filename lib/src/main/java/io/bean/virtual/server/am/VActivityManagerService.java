@@ -63,12 +63,10 @@ import mirror.android.app.ApplicationThreadNative;
 import static android.os.Process.killProcess;
 import static io.bean.virtual.os.VUserHandle.getUserId;
 
-/**
- * @author Lody
- */
 public class VActivityManagerService extends IActivityManager.Stub {
 
     private static final boolean BROADCAST_NOT_STARTED_PKG = true;
+    private static final String PREFIX = ":task";
 
     private static final AtomicReference<VActivityManagerService> sService = new AtomicReference<>();
     private static final String TAG = VActivityManagerService.class.getSimpleName();
@@ -567,7 +565,7 @@ public class VActivityManagerService extends IActivityManager.Stub {
     }
 
     private int parseVPid(String stubProcessName) {
-        String prefix = VirtualCore.get().getHostPkg() + ":p";
+        String prefix = VirtualCore.get().getHostPkg() + PREFIX;
         if (stubProcessName != null && stubProcessName.startsWith(prefix)) {
             try {
                 return Integer.parseInt(stubProcessName.substring(prefix.length()));

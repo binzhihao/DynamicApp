@@ -28,15 +28,15 @@ public class StubManifest {
     public static boolean ENABLE_IO_REDIRECT = true;
 
     public static String getStubActivityName(int index) {
-        return String.format(Locale.ENGLISH, "%s$C%d", STUB_ACTIVITY, index);
+        return String.format(Locale.ENGLISH, "%s$S%d", STUB_ACTIVITY, index);
     }
 
     public static String getStubDialogName(int index) {
-        return String.format(Locale.ENGLISH, "%s$C%d", STUB_DIALOG, index);
+        return String.format(Locale.ENGLISH, "%s$S%d", STUB_DIALOG, index);
     }
 
     public static String getStubCP(int index) {
-        return String.format(Locale.ENGLISH, "%s$C%d", STUB_CP, index);
+        return String.format(Locale.ENGLISH, "%s$S%d", STUB_CP, index);
     }
 
     public static String getStubAuthority(int index) {

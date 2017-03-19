@@ -12,9 +12,6 @@ import io.bean.virtual.helper.utils.VLog;
 import io.bean.virtual.server.ServiceCache;
 import io.bean.virtual.server.interfaces.IServiceFetcher;
 
-/**
- * @author Lody
- */
 public class ServiceManagerNative {
 
 	public static final String PACKAGE = "package";

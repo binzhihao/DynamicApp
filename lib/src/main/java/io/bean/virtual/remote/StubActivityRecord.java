@@ -4,10 +4,6 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 
-/**
- * @author Lody
- */
-
 public class StubActivityRecord  {
         public Intent intent;
         public ActivityInfo info;

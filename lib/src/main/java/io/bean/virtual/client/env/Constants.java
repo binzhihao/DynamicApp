@@ -1,14 +1,9 @@
 package io.bean.virtual.client.env;
 
-import android.app.PendingIntent;
 import android.content.Intent;
 
 import io.bean.virtual.client.stub.ShortcutHandleActivity;
 
-/**
- * @author Lody
- *
- */
 public class Constants {
 
 	public static final String EXTRA_USER_HANDLE = "android.intent.extra.user_handle";
@@ -28,12 +23,10 @@ public class Constants {
 	public static final String ACTION_USER_REMOVED = "virtual." + "android.intent.action.USER_REMOVED";
 	public static final String ACTION_USER_INFO_CHANGED = "virtual." + "android.intent.action.USER_CHANGED";
 	public static final String ACTION_USER_STARTED = "Virtual." + "android.intent.action.USER_STARTED";
-	public static String META_KEY_IDENTITY = "X-Identity";
-	public static String META_VALUE_STUB = "Stub-User";
 	/**
 	 * Server process name of VA
 	 */
-	public static String SERVER_PROCESS_NAME = ":x";
+	public static String SERVER_PROCESS_NAME = ":service";
 	/**
 	 * The activity who handle the shortcut.
 	 */

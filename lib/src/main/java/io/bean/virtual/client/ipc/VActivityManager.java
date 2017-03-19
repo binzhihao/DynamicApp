@@ -32,9 +32,6 @@ import java.util.Map;
 import mirror.android.app.ActivityThread;
 import mirror.android.content.ContentProviderNative;
 
-/**
- * @author Lody
- */
 public class VActivityManager {
 
     private static final VActivityManager sAM = new VActivityManager();
