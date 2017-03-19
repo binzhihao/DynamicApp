@@ -282,420 +282,420 @@
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S0"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task0"
+            android:process=":p0"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S1"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task1"
+            android:process=":p1"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S2"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task2"
+            android:process=":p2"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S3"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task3"
+            android:process=":p3"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S4"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task4"
+            android:process=":p4"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S5"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task5"
+            android:process=":p5"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S6"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task6"
+            android:process=":p6"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S7"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task7"
+            android:process=":p7"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S8"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task8"
+            android:process=":p8"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S9"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task9"
+            android:process=":p9"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S10"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task10"
+            android:process=":p10"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S11"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task11"
+            android:process=":p11"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S12"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task12"
+            android:process=":p12"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S13"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task13"
+            android:process=":p13"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S14"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task14"
+            android:process=":p14"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S15"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task15"
+            android:process=":p15"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S16"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task16"
+            android:process=":p16"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S17"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task17"
+            android:process=":p17"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S18"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task18"
+            android:process=":p18"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S19"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task19"
+            android:process=":p19"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S20"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task20"
+            android:process=":p20"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S21"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task21"
+            android:process=":p21"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S22"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task22"
+            android:process=":p22"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S23"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task23"
+            android:process=":p23"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S24"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task24"
+            android:process=":p24"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S25"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task25"
+            android:process=":p25"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S26"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task26"
+            android:process=":p26"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S27"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task27"
+            android:process=":p27"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S28"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task28"
+            android:process=":p28"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubActivity$S29"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task29"
+            android:process=":p29"
             android:taskAffinity="${applicationId}"
             android:theme="@style/VATheme" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S0"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task0"
+            android:process=":p0"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S1"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task1"
+            android:process=":p1"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S2"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task2"
+            android:process=":p2"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S3"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task3"
+            android:process=":p3"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S4"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task4"
+            android:process=":p4"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S5"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task5"
+            android:process=":p5"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S6"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task6"
+            android:process=":p6"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S7"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task7"
+            android:process=":p7"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S8"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task8"
+            android:process=":p8"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S9"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task9"
+            android:process=":p9"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S10"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task10"
+            android:process=":p10"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S11"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task11"
+            android:process=":p11"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S12"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task12"
+            android:process=":p12"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S13"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task13"
+            android:process=":p13"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S14"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task14"
+            android:process=":p14"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S15"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task15"
+            android:process=":p15"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S16"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task16"
+            android:process=":p16"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S17"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task17"
+            android:process=":p17"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S18"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task18"
+            android:process=":p18"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S19"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task19"
+            android:process=":p19"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S20"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task20"
+            android:process=":p20"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S21"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task21"
+            android:process=":p21"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S22"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task22"
+            android:process=":p22"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S23"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task23"
+            android:process=":p23"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S24"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task24"
+            android:process=":p24"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S25"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task25"
+            android:process=":p25"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S26"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task26"
+            android:process=":p26"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S27"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task27"
+            android:process=":p27"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S28"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task28"
+            android:process=":p28"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
         <activity
             android:name="io.bean.virtual.client.stub.StubDialog$S29"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale"
-            android:process=":task29"
+            android:process=":p29"
             android:taskAffinity="${applicationId}"
             android:theme="@android:style/Theme.Dialog" />
 
@@ -703,181 +703,181 @@
             android:name="io.bean.virtual.client.stub.StubContentProvider$S0"
             android:authorities="${applicationId}.virtual_stub_0"
             android:exported="false"
-            android:process=":task0" />
+            android:process=":p0" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S1"
             android:authorities="${applicationId}.virtual_stub_1"
             android:exported="false"
-            android:process=":task1" />
+            android:process=":p1" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S2"
             android:authorities="${applicationId}.virtual_stub_2"
             android:exported="false"
-            android:process=":task2" />
+            android:process=":p2" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S3"
             android:authorities="${applicationId}.virtual_stub_3"
             android:exported="false"
-            android:process=":task3" />
+            android:process=":p3" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S4"
             android:authorities="${applicationId}.virtual_stub_4"
             android:exported="false"
-            android:process=":task4" />
+            android:process=":p4" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S5"
             android:authorities="${applicationId}.virtual_stub_5"
             android:exported="false"
-            android:process=":task5" />
+            android:process=":p5" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S6"
             android:authorities="${applicationId}.virtual_stub_6"
             android:exported="false"
-            android:process=":task6" />
+            android:process=":p6" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S7"
             android:authorities="${applicationId}.virtual_stub_7"
             android:exported="false"
-            android:process=":task7" />
+            android:process=":p7" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S8"
             android:authorities="${applicationId}.virtual_stub_8"
             android:exported="false"
-            android:process=":task8" />
+            android:process=":p8" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S9"
             android:authorities="${applicationId}.virtual_stub_9"
             android:exported="false"
-            android:process=":task9" />
+            android:process=":p9" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S10"
             android:authorities="${applicationId}.virtual_stub_10"
             android:exported="false"
-            android:process=":task10" />
+            android:process=":p10" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S11"
             android:authorities="${applicationId}.virtual_stub_11"
             android:exported="false"
-            android:process=":task11" />
+            android:process=":p11" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S12"
             android:authorities="${applicationId}.virtual_stub_12"
             android:exported="false"
-            android:process=":task12" />
+            android:process=":p12" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S13"
             android:authorities="${applicationId}.virtual_stub_13"
             android:exported="false"
-            android:process=":task13" />
+            android:process=":p13" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S14"
             android:authorities="${applicationId}.virtual_stub_14"
             android:exported="false"
-            android:process=":task14" />
+            android:process=":p14" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S15"
             android:authorities="${applicationId}.virtual_stub_15"
             android:exported="false"
-            android:process=":task15" />
+            android:process=":p15" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S16"
             android:authorities="${applicationId}.virtual_stub_16"
             android:exported="false"
-            android:process=":task16" />
+            android:process=":p16" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S17"
             android:authorities="${applicationId}.virtual_stub_17"
             android:exported="false"
-            android:process=":task17" />
+            android:process=":p17" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S18"
             android:authorities="${applicationId}.virtual_stub_18"
             android:exported="false"
-            android:process=":task18" />
+            android:process=":p18" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S19"
             android:authorities="${applicationId}.virtual_stub_19"
             android:exported="false"
-            android:process=":task19" />
+            android:process=":p19" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S20"
             android:authorities="${applicationId}.virtual_stub_20"
             android:exported="false"
-            android:process=":task20" />
+            android:process=":p20" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S21"
             android:authorities="${applicationId}.virtual_stub_21"
             android:exported="false"
-            android:process=":task21" />
+            android:process=":p21" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S22"
             android:authorities="${applicationId}.virtual_stub_22"
             android:exported="false"
-            android:process=":task22" />
+            android:process=":p22" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S23"
             android:authorities="${applicationId}.virtual_stub_23"
             android:exported="false"
-            android:process=":task23" />
+            android:process=":p23" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S24"
             android:authorities="${applicationId}.virtual_stub_24"
             android:exported="false"
-            android:process=":task24" />
+            android:process=":p24" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S25"
             android:authorities="${applicationId}.virtual_stub_25"
             android:exported="false"
-            android:process=":task25" />
+            android:process=":p25" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S26"
             android:authorities="${applicationId}.virtual_stub_26"
             android:exported="false"
-            android:process=":task26" />
+            android:process=":p26" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S27"
             android:authorities="${applicationId}.virtual_stub_27"
             android:exported="false"
-            android:process=":task27" />
+            android:process=":p27" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S28"
             android:authorities="${applicationId}.virtual_stub_28"
             android:exported="false"
-            android:process=":task28" />
+            android:process=":p28" />
 
         <provider
             android:name="io.bean.virtual.client.stub.StubContentProvider$S29"
             android:authorities="${applicationId}.virtual_stub_29"
             android:exported="false"
-            android:process=":task29" />
+            android:process=":p29" />
 
     </application>
 </manifest>

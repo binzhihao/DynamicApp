@@ -203,9 +203,6 @@ public class NativeEngine {
 
     private static native void nativeHookNative(Object method, String hostPackageName, boolean isArt, int apiLevel, int cameraMethodType);
 
-    private static native void nativeMark();
-
-
     private static native String nativeRestoreRedirectedPath(String redirectedPath);
 
     private static native String nativeGetRedirectedPath(String orgPath);

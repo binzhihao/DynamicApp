@@ -1,13 +1,8 @@
-//
-// VirtualApp Native Project
-//
-#include "Core.h"
 
+#include "Core.h"
 
 JavaVM *g_vm;
 jclass g_jclass;
-
-
 
 void hook_native(JNIEnv *env, jclass jclazz, jobjectArray javaMethods, jstring packageName, jboolean isArt, jint apiLevel, jint cameraMethodType) {
     static bool hasHooked = false;
@@ -46,19 +41,16 @@ jstring restore(JNIEnv *env, jclass jclazz, jstring redirectedPath) {
     return env->NewStringUTF(org_path);
 }
 
-
-
+// 动态注册使用的数据结构
 static JNINativeMethod gMethods[] = {
         NATIVE_METHOD((void *) hook_io,  "nativeHook",                  "(I)V"),
         NATIVE_METHOD((void *) redirect, "nativeRedirect",              "(Ljava/lang/String;Ljava/lang/String;)V"),
         NATIVE_METHOD((void *) query,    "nativeGetRedirectedPath",     "(Ljava/lang/String;)Ljava/lang/String;"),
         NATIVE_METHOD((void *) restore,  "nativeRestoreRedirectedPath", "(Ljava/lang/String;)Ljava/lang/String;"),
-
         NATIVE_METHOD((void *) hook_native, "nativeHookNative", "(Ljava/lang/Object;Ljava/lang/String;ZII)V"),
 };
 
-
-
+// System.loadLibrary 加载动态库后这个方法被调用，用于做一些初始化动作包括动态注册
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
     JNIEnv *env;
     if (vm->GetEnv((void **) &env, JNI_VERSION_1_6) != JNI_OK) {
@@ -78,8 +70,6 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
     env->DeleteLocalRef(javaClass);
     return JNI_VERSION_1_6;
 }
-
-
 
 JNIEXPORT void JNICALL JNI_OnUnload(JavaVM* vm, void* reserved) {
     JNIEnv *env;

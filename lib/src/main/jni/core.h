@@ -1,6 +1,3 @@
-//
-// VirtualApp Native Project
-//
 
 #ifndef NDK_CORE_H
 #define NDK_CORE_H
